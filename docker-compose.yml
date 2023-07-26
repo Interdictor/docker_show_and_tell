@@ -1,0 +1,13 @@
+services:
+  # front:
+  #   build:
+  #     context: .
+
+  vite_scaffolder:
+    build:
+      context: .
+      dockerfile: Dockerfile.vite
+    volumes:
+      - type: bind
+        source: .
+        target: /opt/workdir/
