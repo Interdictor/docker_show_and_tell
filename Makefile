@@ -1,5 +1,5 @@
 init:
-	docker compose up
+	docker compose run front npm install
 
 up:
 	docker compose up
