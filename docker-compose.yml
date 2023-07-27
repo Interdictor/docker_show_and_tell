@@ -1,7 +1,14 @@
 services:
-  # front:
-  #   build:
-  #     context: .
+  front:
+    build:
+      context: ./front
+    ports:
+      - 5173:5173
+    volumes:
+      - node_modules:/opt/workdir/node_modules
+      - type: bind
+        source: ./front
+        target: /opt/workdir
 
   vite_scaffolder:
     build:
@@ -10,4 +17,7 @@ services:
     volumes:
       - type: bind
         source: .
-        target: /opt/workdir/
+        target: /opt/workdir
+
+volumes:
+  node_modules:

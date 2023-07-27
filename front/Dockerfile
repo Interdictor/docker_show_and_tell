@@ -1,6 +1,6 @@
 FROM node:18.16-buster-slim AS dev
 
-ENV WORKPATH /opt/workdir/
+ENV WORKPATH /opt/workdir
 ENV USERNAME=node
 ENV USER_ID=1000
 ENV GROUP_ID=1000
@@ -9,7 +9,8 @@ RUN usermod -g ${GROUP_ID} ${USERNAME}
 
 WORKDIR ${WORKPATH}
 
-RUN npm install -g create-vite@latest
-USER ${USERNAME}
+COPY package*.json .
+RUN npm install
+COPY . ${WORKPATH}
 
-CMD ["/bin/true"]
+CMD ["npm", "run", "dev"]
